@@ -9,9 +9,9 @@ var os = require('os');
 app.get('*', function(req, res) {
     var ip = req.headers['x-forwarded-for'];
     var language = req.headers["accept-language"];
-    var software = os.platform();
+    var software = req.headers['user-agent'];
     var version = os.release();
-    var user = {"ip": ip, "language": language, "software": software + "; " + version};
+    var user = {"ip": ip, "language": language, "software": software};
     
 	res.write(JSON.stringify(user));
 	res.end();
