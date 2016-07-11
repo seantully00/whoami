@@ -11,7 +11,7 @@ app.get('*', function(req, res) {
     var ip = req.headers['x-forwarded-for'];
     var language = req.headers["accept-language"];
     var software = useragent.parse(req.headers['user-agent']);
-    software.toString();
+    software = software.toString();
     var user = {"ip": ip, "language": language, "software": software};
     
 	res.write(JSON.stringify(user));
